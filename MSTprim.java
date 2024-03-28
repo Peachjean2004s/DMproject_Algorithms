@@ -52,6 +52,7 @@ class MSTprim {
             if(parent[i] != -1){
                 int from = Math.min(parent[i], i);
                 int to = Math.max(parent[i], i);
+               // System.out.println(parent[i] + " - " + i + "\t      " + graph[i][parent[i]]);
                 System.out.println(from + " - " + to + "\t      " + graph[i][parent[i]]);
                 minimum += graph[i][parent[i]];
             }

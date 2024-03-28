@@ -4,6 +4,7 @@ public class Main {
         Graph g = new Graph();
         g.Creategraph();
         g.prim();
+        g.shortestPath();
         
 
     }

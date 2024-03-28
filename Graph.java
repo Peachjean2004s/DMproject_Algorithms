@@ -6,6 +6,7 @@ class Graph {
     int edges;
     int[][] MatrixGraph;
     MSTprim m ;
+    Shortestpath sp ;
 
     void Creategraph() {
         
@@ -31,6 +32,7 @@ class Graph {
             MatrixGraph[from][to] = label;
             MatrixGraph[to][from] = label;
         }
+        sp = new Shortestpath(vertices, MatrixGraph);
 
         if (vertices < 2 || edges < 1 ) {
             System.out.println("The graph is not correct. It should have at least 2 vertices and 1 edge.");
@@ -40,13 +42,6 @@ class Graph {
             System.out.println("The graph is connected.");
         } else {
             System.out.println("The graph is not connected.");
-        }
-
-        for (int i = 1; i < MatrixGraph.length; i++) {
-            for (int j = 1; j < MatrixGraph.length; j++) {
-                System.out.print(MatrixGraph[i][j] + " ");
-            }
-            System.out.println();
         }
        
     }
@@ -73,5 +68,14 @@ class Graph {
 
     void prim(){
         m.primMST(MatrixGraph);
+    }
+
+    void  shortestPath() {
+        System.out.println("Find the shortest path Dijkstra's Algorithm");
+        System.out.print("Form vertex: ");
+        int form = sc.nextInt();
+        System.out.print("To vertex: ");
+        int to = sc.nextInt();
+        sp.dijkstra(form, to);
     }
 }
