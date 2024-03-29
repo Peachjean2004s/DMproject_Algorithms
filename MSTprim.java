@@ -18,7 +18,7 @@ class MSTprim {
         return min_index;
     }
 
-    void primMST(int graph[][]) {
+    void prim(int graph[][]) {
         int parent[] = new int[vertices + 1];
         int key[] = new int[vertices + 1];
         Boolean mstSet[] = new Boolean[vertices + 1];
@@ -35,28 +35,23 @@ class MSTprim {
             int u = minKey(key, mstSet);
             mstSet[u] = true;
 
-            for (int v = 1; v <= vertices; v++)
+            for (int v = 1; v <= vertices; v++) {
                 if (graph[u][v] != 0 && mstSet[v] == false && graph[u][v] < key[v]) {
                     parent[v] = u;
                     key[v] = graph[u][v];
                 }
+            }
         }
-
-        printMST(parent, graph);
-    }
-
-    void printMST(int parent[], int graph[][]) {
-        int minimum = 0 ;
-        System.out.println("Edge \t  Length");
+        int minimum = 0;
+        System.out.println("Edge    Length");
         for (int i = 2; i <= vertices; i++) {
-            if(parent[i] != -1){
-                int from = Math.min(parent[i], i);
-                int to = Math.max(parent[i], i);
-               // System.out.println(parent[i] + " - " + i + "\t      " + graph[i][parent[i]]);
-                System.out.println(from + " - " + to + "\t      " + graph[i][parent[i]]);
+            if (parent[i] != -1) {
+                System.out.println(parent[i] + " - " + i + "     " + graph[i][parent[i]]);
                 minimum += graph[i][parent[i]];
             }
         }
         System.out.println("Minimum Spanning Tree Prim's Algorithm : " + minimum);
+
     }
+
 }
