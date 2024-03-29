@@ -6,7 +6,8 @@ class Graph {
     int edges;
     int[][] MatrixGraph;
     MSTprim m ;
-    Shortestpath sp ;
+    Shortestpath sp = new Shortestpath();
+    MSTKruskal k = new MSTKruskal() ;
 
     void Creategraph() {
         
@@ -16,6 +17,7 @@ class Graph {
         edges = sc.nextInt();
         MatrixGraph = new int[vertices + 1][vertices + 1];
         m = new MSTprim(vertices);
+
 
         for (int i = 1; i <= edges; i++) {
             System.out.println("Enter details for edge " + i + ":");
@@ -32,7 +34,6 @@ class Graph {
             MatrixGraph[from][to] = label;
             MatrixGraph[to][from] = label;
         }
-        sp = new Shortestpath(vertices, MatrixGraph);
 
         if (vertices < 2 || edges < 1 ) {
             System.out.println("The graph is not correct. It should have at least 2 vertices and 1 edge.");
@@ -67,15 +68,18 @@ class Graph {
     }
 
     void prim(){
-        m.primMST(MatrixGraph);
+        System.out.println("---------- Prim's Minimum Spanning Tree Algorithm ----------");
+        m.prim(MatrixGraph);
+    }
+
+    void kruskal(){
+        System.out.println("---------- Kruskal's Minimum Spanning Tree Algorithm ----------");
+        k.kruskals(MatrixGraph);
+      
     }
 
     void  shortestPath() {
-        System.out.println("Find the shortest path Dijkstra's Algorithm");
-        System.out.print("Form vertex: ");
-        int form = sc.nextInt();
-        System.out.print("To vertex: ");
-        int to = sc.nextInt();
-        sp.dijkstra(form, to);
+        System.out.println("---------- Find the shortest path Dijkstra's Algorithm ----------");
+        Shortestpath.shortestpath(MatrixGraph, vertices);
     }
 }
