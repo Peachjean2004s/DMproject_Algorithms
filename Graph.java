@@ -39,11 +39,6 @@ class Graph {
             System.out.println("The graph is not correct. It should have at least 2 vertices and 1 edge.");
             return;
         }
-        if (isConnected()) {
-            System.out.println("The graph is connected.");
-        } else {
-            System.out.println("The graph is not connected.");
-        }
        
     }
 
