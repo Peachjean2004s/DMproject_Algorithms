@@ -25,21 +25,36 @@ public class Main {
                     Select = sc.nextInt();
                     break;
                 case 1:
+                if (g.isConnected()) {
                     g.prim();
+                } else {
+                    System.out.println("Graph is not Connected.");
+                    return;
+                }
                     System.out.println("-------------------------");
                     System.out.println("0. Back to the Menus");
                     System.out.println("4. Close Program");
                     Select = sc.nextInt();
                     break;
                 case 2:
+                if (g.isConnected()) {
                     g.kruskal();
+                } else {
+                    System.out.println("Graph is not Connected.");
+                    return;
+                }
                     System.out.println("-------------------------");
                     System.out.println("0. Back to the Menus");
                     System.out.println("4. Close Program");
                     Select = sc.nextInt();
                     break;
                 case 3:
-                    g.shortestPath();
+                if (g.isConnected()) {
+                    g.shortestPath();;
+                } else {
+                    System.out.println("Graph is not Connected.");
+                    return;
+                }
                     System.out.println("-------------------------");
                     System.out.println("0. Back to the Menus");
                     System.out.println("4. Close Program");
